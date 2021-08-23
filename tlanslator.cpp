@@ -1,147 +1,133 @@
-//Robimy tlanslator na którym będziemy pytać się o system i liczbę 
-// następnie program pokaże przekonwertowane liczby na 2 8 16 i 10
-// JAZDAA :)
-//
-//
-//
 #include <iostream>
 using namespace std;
 
+void translate(int x)
+{
+    //dwójkowy
+    cout << x;
+    int y,i,tablica[100];
+    int o=0,S=x; 
+    int tab2[100] = { 1, 0, 1, 0};
+    while (x>=1)
+    {   
+        y = x%2; 
+        tablica[o] = y;
+        o++;
+        x = x/2;    
+    }
+    cout << endl << "dwojkowy: ";
+    for(i=o-1;i>=0;i--)
+    {
+        cout << tablica[i];
+    }
+    
+    //ósemkowy
+    
+    o=0,x=S;    
+    while(x>=1)
+    {   
+        y = x%8; 
+        tablica[o] = y;
+        o++;
+        x = x/8;    
+    }
+    cout << endl << "osemkowy: ";
+    for(i=o-1;i>=0;i--)
+    {
+        cout << tablica[i];
+    }
+
+    //szestnastkowy
+
+        o=0,x=S;    
+    while(x>=1)
+    {   
+        y = x%16; 
+        tablica[o] = y;
+        o++;
+        x = x/16;    
+    }
+    cout << endl << "szestnastkowy: ";
+        for(i=o-1;i>=0;i--)
+        {
+            switch (tablica[i])
+            {
+            case 10:
+                cout << "A";
+                break;
+            case 11:
+                cout << "B";
+                break;
+            case 12:
+                cout << "C";
+                break;
+            case 13:
+                cout << "D";
+                break;
+            case 14:
+                cout << "E";
+                break;
+            case 15:
+                cout << "F";
+                break;
+            default:
+                cout << tablica[i];
+                break;
+            }
+        }
+    
+    //dwojkowy na dziesietny
+    cout << endl ; //"dwoj na dzies";
+    int L=3;
+    o=0;
+    x=0;
+    for(i=L;i>=0;i--)
+    {
+        /*switch (tab2[i])
+        {
+        case  1 :
+            x=+2^o;
+            o++;
+            break;
+        case 0 :
+            o++;
+            break;                    
+        default:
+        cout << "blad";
+            break;
+        }*/
+        if (tab2[i]==1)
+        {
+            
+            o++;
+            cout << i << " jeden " << x << " " << o << endl;
+        }
+        if (tab2[i]==0)
+        {
+            o++;
+            cout << i << " zero " << x << " " << o << endl;
+        }
+        if (tab2[i]>1)
+        {
+            cout << "blad";
+            cout << i << " " << x << endl;
+        }    
+    }
+    //cout << x;
+
+
+    
+
+}
+void ShowResults()
+{
+    
+
+}
 
 int main()
 {
-    int tablica[1000];
-    int z,D,E,P,K;
-    int x,X,i,o;
-    K=123123;
-    cout << K << endl;    
-    
-// x to liczba dziesietna
-// X to liczba dwojkowa wprowadzanie
-    //dziesiatkowy na szesnastowy
-    cout << endl << "Hex: ";
-    x=K;
-    D=0;
-    o = x % 16;
-    for(i=1;i<100;i++)
-    {
-        if(x<1)
-        {   
-            tablica[i] = o;
-            break;
-        }
-        tablica[i] = o;
-        D++;    
-        x = x/16;
-        o = x%16;
+    translate(2000);
 
-    }
-    for(i=D;i>0;i--)
-    {
-        if(tablica[i]<10)  {    
-        cout << (tablica[i]);
-        }
-        if(tablica[i]==10){
-             cout << "A";
-        }
-        if(tablica[i]==11){
-             cout << "B";
-        }
-        if(tablica[i]==12){
-             cout << "C";
-        }
-        if(tablica[i]==13){
-             cout << "D";
-        }
-        if(tablica[i]==14){
-             cout << "E";
-        }
-        if(tablica[i]==15){
-             cout << "F";
-        }
-    }
-    cout << endl << "Osi: ";
-    x=K;
-    D=0;
-    o = x % 8;
-    for(i=1;i<100;i++)
-    {
-        if(x<1)
-        {   
-            break;
-        }
-            tablica[i] = o;
-            D++;    
-        x = x/8;
-        o = x%8;
-
-    }
-    for(i=D;i>0;i--)
-    {
-        cout << (tablica[i]);
-    }
-
-   /* //dwojkowy na dziesietny
-    cout << ("podaj liczba dwojkowa") << endl;
-    x=0;
-    D=0;
-    for(i=0;i<100;i++){
-    cin >> X;
-    if(X>2)
-    {
-        cout <<"BLAD";
-        return 0;
-    }
-    if(X=2)
-    {
-        break;
-    }
-    tablica[i] = X;
-    E++;
-    }
-    for(i=E;i<0;i--)
-    {
-        if(tablica[i]=1)
-        {
-            x+=2^D;
-            D++;
-        }
-        if(tablica[i]=0)
-        {
-            D++;
-        }
-    }
-    
-    */
-    //dziesietny na dwojkowy
-    cout << endl << "Dwoj: ";
-    x=K;
-    D=0;
-    z = x % 2;
-    for(i=1;i<100;i++)
-    {
-        if(x<1)
-        {   
-            break;
-        }
-        else if(z==1)
-        {
-            tablica[i] = z;
-            D++;    
-        }
-        else if(z==0)
-        {
-            tablica[i] = z;
-            D++;
-        }
-        x = x/2;
-        z = x%2;
-
-    }
-    for(i=D;i>0;i--)
-    {
-        cout << (tablica[i]);
-    }
-    return 0;
-
+    return 0;    
 }
