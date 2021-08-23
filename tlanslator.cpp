@@ -5,7 +5,7 @@ void translate(int x)
 {
     //dwójkowy
     cout << x;
-    int y,i,tablica[100];
+    int y,i,tablica[100] ;
     int o=0,S=x; 
     int tab2[100] = { 1, 0, 1, 0};
     while (x>=1)
@@ -98,7 +98,7 @@ void translate(int x)
         }*/
         if (tab2[i]==1)
         {
-            
+            x = x + pow(2,o);
             o++;
             cout << i << " jeden " << x << " " << o << endl;
         }
@@ -119,6 +119,7 @@ void translate(int x)
     
 
 }
+
 void ShowResults()
 {
     
@@ -130,4 +131,18 @@ int main()
     translate(2000);
 
     return 0;    
+}
+
+int pow(int base, int pow)
+{
+    int result, i;
+    for(i=0;i<pow;i++)
+    {
+        base = base * result;
+    }
+    if(base=0)
+    {
+        result = 1;
+    }
+    return result;
 }
